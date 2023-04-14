@@ -6,25 +6,19 @@
 
   <rosparam file="$(arg sensors_config)" command="load" />
 
+  <!-- <node pkg="urg_node" type="urg_node" name="laser_node" /> -->
   <node pkg="usb_cam" type="usb_cam_node" name="camera">
     <param name="~pixel_format" value="yuyv" />
     <param name="~image_width" value="320" />
     <param name="~image_height" value="240" />
     <param name="~framerate" value="10" />
-    <param name="~brightness" value="0" />
-    <param name="~contrast" value="32" />
+    <param name="~brightness" value="255" />
+    <param name="~contrast" value="128" />
   </node>
 
-  <!-- <include file="$(find realsense2_camera)/launch/rs_t265.launch">
+  <include file="$(find realsense2_camera)/launch/rs_t265.launch">
     <arg name="camera" value="realsense_tracker" />
-    <arg name="publish_odom_tf" value="false" />
-  </include> -->
-
-  <node pkg="um7" type="um7_driver" name="um7">
-    <param name="~port" type="string" value="/dev/sensors/um7" />
-  </node>
-
-  <include file="$(find ublox_gps)/launch/ublox_device.launch">
-	  <arg name="param_file_name" value="zed_f9p" />
+    <arg name="publish_odom_tf" value="true" />
+    <!-- <arg name="map_file" value="/home/racecar/maps/corner_area.map.raw" /> -->
   </include>
 </launch>

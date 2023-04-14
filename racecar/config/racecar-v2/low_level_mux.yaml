@@ -20,7 +20,7 @@ subscribers:
 
   - name:        "Navigation"
     topic:       "input/navigation"
-    timeout:     0.2
+    timeout:     0.4
     priority:    0
     short_desc:  "Input for autonomous navigation"
     
